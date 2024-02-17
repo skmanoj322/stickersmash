@@ -14,8 +14,10 @@ export default function App() {
       allowsEditing: true,
       quality: 1,
     });
+    console.log(result);
     if (!result.canceled) {
       console.log(result);
+      setSelectedImage(result.assets[0].uri);
     } else {
       alert("You did not select any image.");
     }
@@ -23,7 +25,10 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
-        <ImageViewer placeholderImageSource={PlaceholderImage} />
+        <ImageViewer
+          placeholderImageSource={PlaceholderImage}
+          selectedImage={selectedImage}
+        />
       </View>
       <View style={styles.footerContainer}>
         <Button
